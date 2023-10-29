@@ -1,4 +1,8 @@
-.Card-Container{
+.Dashboard-Container{
     height: calc(100vh - 60px);
     padding: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+    width: 100vw;
 }
