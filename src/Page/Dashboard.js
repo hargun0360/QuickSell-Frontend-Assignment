@@ -11,7 +11,6 @@ import profile6 from "../Assets/profile6.png";
 import profile7 from "../Assets/profile7.png";
 
 const Dashboard = () => {
-
   const [userData, setUserData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [status, setStatus] = useState({});
@@ -25,11 +24,20 @@ const Dashboard = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [grouping, ordering]);
 
+  const sortByTitle = (tickets) => {
+    return tickets.sort((a, b) => a.title.localeCompare(b.title));
+  };
 
   const groupByStatus = (tickets) => {
-    const grouped = tickets.reduce((acc, ticket) => {
+    let sortedTickets = tickets;
+
+    if (ordering === "title") {
+      sortedTickets = sortByTitle(tickets);
+    }
+
+    const grouped = sortedTickets.reduce((acc, ticket) => {
       if (!acc[ticket.status]) {
         acc[ticket.status] = [];
       }
@@ -48,6 +56,7 @@ const Dashboard = () => {
         grouped[key].sort((a, b) => b.priority - a.priority);
       }
     }
+
     return {
       Keys: statusKeys,
       ...grouped,
@@ -55,13 +64,20 @@ const Dashboard = () => {
   };
 
   const groupByPriority = (tickets) => {
-    const priorityObject = tickets.reduce((acc, ticket) => {
+    let sortedTickets = tickets;
+
+    if (ordering === "title") {
+      sortedTickets = sortByTitle(tickets);
+    }
+
+    const priorityObject = sortedTickets.reduce((acc, ticket) => {
       if (!acc[ticket.priority]) {
         acc[ticket.priority] = [];
       }
       acc[ticket.priority].push(ticket);
       return acc;
     }, {});
+
     return {
       Keys: Object.keys(priorityObject),
       ...priorityObject,
@@ -69,7 +85,13 @@ const Dashboard = () => {
   };
 
   const groupByUser = (tickets) => {
-    const grouped = tickets.reduce((acc, ticket) => {
+    let sortedTickets = tickets;
+
+    if (ordering === "title") {
+      sortedTickets = sortByTitle(tickets);
+    }
+
+    const grouped = sortedTickets.reduce((acc, ticket) => {
       if (!acc[ticket.userId]) {
         acc[ticket.userId] = [];
       }
@@ -133,6 +155,7 @@ const Dashboard = () => {
           <Navbar
             grouping={grouping}
             setGrouping={setGrouping}
+            setOrdering={setOrdering}
             call={getData}
           />
           <div className="Dashboard-Container">
@@ -195,7 +218,6 @@ const Dashboard = () => {
       </>
     );
   } else if (grouping === "user") {
-
     return (
       <>
         <div>
@@ -307,16 +329,22 @@ const Dashboard = () => {
                   <div className="column" key={index}>
                     <div className="Header">
                       <div className="icon-text-priority">
-                      {item == "0" ? (
-                          <i className="bx bx-dots-horizontal-rounded" id="noPriority"></i>
+                        {item == "0" ? (
+                          <i
+                            className="bx bx-dots-horizontal-rounded"
+                            id="noPriority"
+                          ></i>
                         ) : item == "1" ? (
-                            <i className='bx bx-signal-2' id="low"></i>
+                          <i className="bx bx-signal-2" id="low"></i>
                         ) : item == "2" ? (
-                            <i className='bx bx-signal-3' id="medium"></i>
+                          <i className="bx bx-signal-3" id="medium"></i>
                         ) : item == "3" ? (
-                            <i className='bx bx-signal-4' id="high"></i>
+                          <i className="bx bx-signal-4" id="high"></i>
                         ) : (
-                            <i className='bx bxs-message-square-error' id="urgent"></i>	
+                          <i
+                            className="bx bxs-message-square-error"
+                            id="urgent"
+                          ></i>
                         )}
                         <span className="text">
                           {`Priority ${item}` == "Priority 4"

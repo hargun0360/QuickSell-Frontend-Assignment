@@ -50,6 +50,7 @@ const Navbar = ({ grouping, setGrouping, ordering, setOrdering , call }) => {
               <label>Ordering</label>
               <select value={ordering} onChange={handleOrdering}>
                 <option value="priority">Priority</option>
+                <option value="title">Title</option>
               </select>
             </div>
           </div>
