@@ -1,8 +1,21 @@
-.Dashboard-Container{
-    height: calc(100vh - 60px);
-    padding: 25px;
+.Dashboard-Container {
+  height: calc(100% - 60px);
+  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  overflow-x: hidden;
+  zoom: 0.75;
+
+  .column {
+    flex: 1;
+    max-width: calc(20% - 20px);
+    border-radius: 8px;
+  }
+  .Header{
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px; 
-    width: 100vw;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
 }

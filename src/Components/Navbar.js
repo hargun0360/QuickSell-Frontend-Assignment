@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({grouping , setGrouping}) => {
   const [isOpen, setIsOpen] = useState(false);
+  
+  const handleChange = (event) => {
+    setGrouping(event.target.value);
+  }
 
   return (
     <div className="Navbar">
@@ -15,10 +19,10 @@ const Navbar = () => {
           <div className="dropdown-content">
             <div className="Grouping">
               <label>Grouping</label>
-              <select>
-                <option value="Status">Status</option>
-                <option value="User">User</option>
-                <option value="Priority">Priority</option>
+              <select value={grouping} onChange={handleChange}>
+                <option value="status">Status</option>
+                <option value="user">User</option>
+                <option value="priority">Priority</option>
               </select>
             </div>
             <div className="Ordering">
