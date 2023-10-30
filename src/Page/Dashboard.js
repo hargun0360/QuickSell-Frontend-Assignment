@@ -11,9 +11,8 @@ import profile6 from "../Assets/profile6.png";
 import profile7 from "../Assets/profile7.png";
 
 const Dashboard = () => {
-  const [cardData, setCardData] = useState([]);
+
   const [userData, setUserData] = useState([]);
-  const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [status, setStatus] = useState({});
   const [user, setUser] = useState({});
@@ -28,7 +27,6 @@ const Dashboard = () => {
     getData();
   }, []);
 
-  console.log(priority);
 
   const groupByStatus = (tickets) => {
     const grouped = tickets.reduce((acc, ticket) => {
@@ -116,8 +114,6 @@ const Dashboard = () => {
       );
       const data = await response.json();
       setIsLoading(false);
-      setData(data);
-      setCardData(data.tickets);
       setUserData(data.users);
       setUser(groupByUser(data.tickets));
       setStatus(groupByStatus(data.tickets));
@@ -199,7 +195,7 @@ const Dashboard = () => {
       </>
     );
   } else if (grouping === "user") {
-    console.log(user);
+
     return (
       <>
         <div>

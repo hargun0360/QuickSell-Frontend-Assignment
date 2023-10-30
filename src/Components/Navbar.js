@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const Navbar = ({ grouping, setGrouping, ordering, setOrdering , call }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const handleGrouping = (event) => {
     setGrouping(event.target.value);
@@ -13,9 +14,23 @@ const Navbar = ({ grouping, setGrouping, ordering, setOrdering , call }) => {
     call();
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="Navbar">
-      <div className="dropdown-container">
+      <div className="dropdown-container" ref={dropdownRef}>
         <button onClick={() => setIsOpen(!isOpen)} className="dropdown-btn">
           <i className="bx bx-slider"></i>
           <div className="btn-txt">Display</div>
