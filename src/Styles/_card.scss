@@ -109,3 +109,37 @@
         color: rgb(80, 55, 206);
       }
 }
+
+.icon-text-priority{
+    display: flex;
+    align-items: center;
+    .text {
+        font-weight: 600;
+        color: black;
+        font-size: 16px;
+        padding-right: 12px;
+        margin-bottom: -2px;
+      }
+    i{
+        font-size: 22px;
+    }
+    #noPriority{
+        color: #8a8585;
+        margin-right: 12px;
+    }
+    #low{
+        color: #8d8787;
+        margin-bottom: 2px;
+    }
+    #medium, #high{
+        color: #8d8787;
+        margin-right: 6px;
+    }
+    #urgent{
+        color: rgb(247, 166, 15);
+        margin-right: 12px;
+    }
+    .count{
+        margin-bottom: -2px;
+    }
+}

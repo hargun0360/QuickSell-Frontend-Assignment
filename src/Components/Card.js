@@ -24,7 +24,7 @@ const Card = ({
     <div className="card">
       <div className="card-header">
         <div className="status-heading">
-        {grouping == "user" ? (
+        {grouping == "user" || grouping == "priority" ? (
           statusMapping[id] == "Todo" ? (
             <i className="bx bx-circle" id="todo"></i>
           ) : statusMapping[id] == "In progress" ? (
@@ -75,7 +75,7 @@ const Card = ({
         <p>{title}</p>
       </div>
       <div className="card-footer">
-        <div className="feature-container">
+       { grouping != "priority" ? <div className="feature-container">
           {priority == "0" ? (
             <i className="bx bx-dots-horizontal-rounded"></i>
           ) : priority == "1" ? (
@@ -86,8 +86,8 @@ const Card = ({
             <i className="bx bx-signal-4"></i>
           ) : (
             <i className="bx bxs-message-square-error"></i>
-          )}
-        </div>
+          ) }
+        </div> : null}
         {tag?.map((value, index) => {
           return (
             <div className="feature-container" key={index}>

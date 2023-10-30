@@ -28,6 +28,8 @@ const Dashboard = () => {
     getData();
   }, []);
 
+  console.log(priority);
+
   const groupByStatus = (tickets) => {
     const grouped = tickets.reduce((acc, ticket) => {
       if (!acc[ticket.status]) {
@@ -78,11 +80,11 @@ const Dashboard = () => {
     }, {});
 
     if (ordering === "priority") {
-        for (let key in grouped) {
-          grouped[key].sort((a, b) => b.priority - a.priority);
-        }
+      for (let key in grouped) {
+        grouped[key].sort((a, b) => b.priority - a.priority);
       }
-      
+    }
+
     return {
       Keys: userData.map((user) => user.id.toString()),
       ...grouped,
@@ -293,9 +295,76 @@ const Dashboard = () => {
     return (
       <>
         <div>
-          <Navbar grouping={grouping} setGrouping={setGrouping} />
+          <Navbar
+            grouping={grouping}
+            setGrouping={setGrouping}
+            ordering={ordering}
+            setOrdering={setOrdering}
+            call={getData}
+          />
           <div className="Dashboard-Container">
-            {isLoading ? <CustomSpinner /> : <></>}
+            {isLoading ? (
+              <CustomSpinner />
+            ) : (
+              <>
+                {priority.Keys.sort((a, b) => a - b).map((item, index) => (
+                  <div className="column" key={index}>
+                    <div className="Header">
+                      <div className="icon-text-priority">
+                      {item == "0" ? (
+                          <i className="bx bx-dots-horizontal-rounded" id="noPriority"></i>
+                        ) : item == "1" ? (
+                            <i className='bx bx-signal-2' id="low"></i>
+                        ) : item == "2" ? (
+                            <i className='bx bx-signal-3' id="medium"></i>
+                        ) : item == "3" ? (
+                            <i className='bx bx-signal-4' id="high"></i>
+                        ) : (
+                            <i className='bx bxs-message-square-error' id="urgent"></i>	
+                        )}
+                        <span className="text">
+                          {`Priority ${item}` == "Priority 4"
+                            ? "Urgent"
+                            : `Priority ${item}` == "Priority 3"
+                            ? "High"
+                            : `Priority ${item}` == "Priority 2"
+                            ? "Medium"
+                            : `Priority ${item}` == "Priority 1"
+                            ? "Low"
+                            : "No Priority"}
+                        </span>
+                        <span className="count">{priority[item]?.length}</span>
+                      </div>
+                      <div className="actions">
+                        <i className="bx bx-plus" id="plus"></i>
+                        <i
+                          className="bx bx-dots-horizontal-rounded"
+                          id="dots"
+                        ></i>
+                      </div>
+                    </div>
+                    {priority[item] &&
+                      priority[item].map((value) => {
+                        return (
+                          <Card
+                            id={value.id}
+                            title={value.title}
+                            tag={value.tag}
+                            userId={value.userId}
+                            status={status}
+                            userData={userData}
+                            priority={value.priority}
+                            key={value.id}
+                            grouping={grouping}
+                            ordering={ordering}
+                            statusMapping={statusMapping}
+                          />
+                        );
+                      })}
+                  </div>
+                ))}
+              </>
+            )}
           </div>
         </div>
       </>
