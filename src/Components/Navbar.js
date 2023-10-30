@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const Navbar = ({ grouping, setGrouping, ordering, setOrdering , call }) => {
+const Navbar = ({ grouping, setGrouping, ordering, setOrdering, call }) => {
+
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  // Handle Change Functions
   const handleGrouping = (event) => {
     setGrouping(event.target.value);
     call();

@@ -24,20 +24,20 @@ const Card = ({
     <div className="card">
       <div className="card-header">
         <div className="status-heading">
-        {grouping == "user" || grouping == "priority" ? (
-          statusMapping[id] == "Todo" ? (
-            <i className="bx bx-circle" id="todo"></i>
-          ) : statusMapping[id] == "In progress" ? (
-            <i className="bx bx-adjust" id="progress"></i>
-          ) : statusMapping[id] == "Backlog" ? (
-            <i className="bx bx-task-x" id="backlog"></i>
-          ) : statusMapping[id] == "Done" ? (
-            <i className="bx bxs-check-circle" id="done"></i>
-          ) : (
-            <i className="bx bxs-x-circle" id="cancel"></i>
-          )
-        ) : null}
-        <p>{id}</p>
+          {grouping == "user" || grouping == "priority" ? (
+            statusMapping[id] == "Todo" ? (
+              <i className="bx bx-circle" id="todo"></i>
+            ) : statusMapping[id] == "In progress" ? (
+              <i className="bx bx-adjust" id="progress"></i>
+            ) : statusMapping[id] == "Backlog" ? (
+              <i className="bx bx-task-x" id="backlog"></i>
+            ) : statusMapping[id] == "Done" ? (
+              <i className="bx bxs-check-circle" id="done"></i>
+            ) : (
+              <i className="bx bxs-x-circle" id="cancel"></i>
+            )
+          ) : null}
+          <p>{id}</p>
         </div>
         {grouping != "user" ? (
           <div
@@ -75,19 +75,21 @@ const Card = ({
         <p>{title}</p>
       </div>
       <div className="card-footer">
-       { grouping != "priority" ? <div className="feature-container">
-          {priority == "0" ? (
-            <i className="bx bx-dots-horizontal-rounded"></i>
-          ) : priority == "1" ? (
-            <i className="bx bx-signal-2"></i>
-          ) : priority == "2" ? (
-            <i className="bx bx-signal-3"></i>
-          ) : priority == "3" ? (
-            <i className="bx bx-signal-4"></i>
-          ) : (
-            <i className="bx bxs-message-square-error"></i>
-          ) }
-        </div> : null}
+        {grouping != "priority" ? (
+          <div className="feature-container">
+            {priority == "0" ? (
+              <i className="bx bx-dots-horizontal-rounded"></i>
+            ) : priority == "1" ? (
+              <i className="bx bx-signal-2"></i>
+            ) : priority == "2" ? (
+              <i className="bx bx-signal-3"></i>
+            ) : priority == "3" ? (
+              <i className="bx bx-signal-4"></i>
+            ) : (
+              <i className="bx bxs-message-square-error"></i>
+            )}
+          </div>
+        ) : null}
         {tag?.map((value, index) => {
           return (
             <div className="feature-container" key={index}>

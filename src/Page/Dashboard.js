@@ -3,14 +3,18 @@ import Card from "../Components/Card";
 import Navbar from "../Components/Navbar";
 import CustomSpinner from "../Components/CustomSpinner";
 
+// Import Images
+
 import profile from "../Assets/profile.png";
 import profile1 from "../Assets/profile1.png";
 import profile4 from "../Assets/profile4.jpeg";
 import profile5 from "../Assets/profile5.jpeg";
 import profile6 from "../Assets/profile6.png";
 import profile7 from "../Assets/profile7.png";
+import { FETCH_URL } from "../Config";
 
 const Dashboard = () => {
+  // State Variables
   const [userData, setUserData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [status, setStatus] = useState({});
@@ -21,7 +25,9 @@ const Dashboard = () => {
   const [availableUser, setAvailableUser] = useState({});
   const [statusMapping, setStatusMapping] = useState({});
   const statusKeys = ["Backlog", "Todo", "In progress", "Done", "Canceled"];
+  
 
+  // Fetch Data 
   useEffect(() => {
     getData();
   }, [grouping, ordering]);
@@ -30,6 +36,7 @@ const Dashboard = () => {
     return tickets.sort((a, b) => a.title.localeCompare(b.title));
   };
 
+  // Grouping the data by Status
   const groupByStatus = (tickets) => {
     let sortedTickets = tickets;
 
@@ -63,6 +70,7 @@ const Dashboard = () => {
     };
   };
 
+  // Grouping the data by Priority
   const groupByPriority = (tickets) => {
     let sortedTickets = tickets;
 
@@ -84,6 +92,7 @@ const Dashboard = () => {
     };
   };
 
+  // Grouping the data by users
   const groupByUser = (tickets) => {
     let sortedTickets = tickets;
 
@@ -111,6 +120,7 @@ const Dashboard = () => {
     };
   };
 
+  // Available User (online/offline) 
   const availabilityMap = (users) => {
     return users.reduce((acc, user) => {
       acc[user.id] = user.available;
@@ -118,6 +128,7 @@ const Dashboard = () => {
     }, {});
   };
 
+  // Work Status
   const extractStatusMapping = (data) => {
     const statusMapping = {};
 
@@ -128,12 +139,11 @@ const Dashboard = () => {
     return statusMapping;
   };
 
+  // Fetch API function
   const getData = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(
-        "https://api.quicksell.co/v1/internal/frontend-assignment"
-      );
+      const response = await fetch(FETCH_URL);
       const data = await response.json();
       setIsLoading(false);
       setUserData(data.users);
