@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
-const Navbar = ({ grouping, setGrouping, ordering, setOrdering }) => {
+const Navbar = ({ grouping, setGrouping, ordering, setOrdering , call }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleGrouping = (event) => {
     setGrouping(event.target.value);
+    call();
   };
 
   const handleOrdering = (event) => {
     setOrdering(event.target.value);
+    call();
   };
 
   return (

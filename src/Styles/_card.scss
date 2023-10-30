@@ -30,49 +30,6 @@
       margin-right: 10px;
       font-weight: 600;
     }
-    .user-avatar {
-      width: 22px;
-      height: 22px;
-      border: 1px solid transparent;
-      border-radius: 50%;
-      position: relative;
-
-      &::after {
-        content: "";
-        width: 8px;
-        height: 7px;
-        background-color: rgb(255, 166, 0);
-        border: 2px solid white;
-        border-radius: 50%;
-        position: absolute;
-        top: 13px;
-        left: 13px;
-        bottom: 0;
-        right: 0;
-      }
-    }
-
-    .user-avatar-unavailable {
-      width: 22px;
-      height: 22px;
-      border: 1px solid transparent;
-      border-radius: 50%;
-      position: relative;
-
-      &::after {
-        content: "";
-        width: 8px;
-        height: 7px;
-        background-color: #ada4a4;
-        border: 2px solid white;
-        border-radius: 50%;
-        position: absolute;
-        top: 13px;
-        left: 13px;
-        bottom: 0;
-        right: 0;
-      }
-    }
   }
 
   .card-title {
@@ -128,4 +85,27 @@
       }
     }
   }
+}
+
+.status-heading{
+    display: flex;
+    p{
+        padding-left: 3px;
+    }
+
+    #todo{
+        color: #8a8585;
+      }
+      #progress{
+        color: rgba(247, 166, 15, 0.699);
+      }
+      #done{
+        color: rgba(79, 39, 210, 0.71);
+      }
+      #cancel{
+        color: #8a8585cd;
+      }
+      #backlog{
+        color: rgb(80, 55, 206);
+      }
 }
