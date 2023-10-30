@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 
-const Navbar = ({grouping , setGrouping}) => {
+const Navbar = ({ grouping, setGrouping, ordering, setOrdering }) => {
   const [isOpen, setIsOpen] = useState(false);
-  
-  const handleChange = (event) => {
+
+  const handleGrouping = (event) => {
     setGrouping(event.target.value);
-  }
+  };
+
+  const handleOrdering = (event) => {
+    setOrdering(event.target.value);
+  };
 
   return (
     <div className="Navbar">
@@ -19,7 +23,7 @@ const Navbar = ({grouping , setGrouping}) => {
           <div className="dropdown-content">
             <div className="Grouping">
               <label>Grouping</label>
-              <select value={grouping} onChange={handleChange}>
+              <select value={grouping} onChange={handleGrouping}>
                 <option value="status">Status</option>
                 <option value="user">User</option>
                 <option value="priority">Priority</option>
@@ -27,9 +31,8 @@ const Navbar = ({grouping , setGrouping}) => {
             </div>
             <div className="Ordering">
               <label>Ordering</label>
-              <select>
-                <option value="Priority">Priority</option>
-                <option value="User">User</option>
+              <select value={ordering} onChange={handleOrdering}>
+                <option value="priority">Priority</option>
               </select>
             </div>
           </div>
