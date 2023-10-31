@@ -24,7 +24,7 @@ const Card = ({
     <div className="card">
       <div className="card-header">
         <div className="status-heading">
-          {grouping == "user" || grouping == "priority" ? (
+          {grouping == "users" || grouping == "priority" ? (
             statusMapping[id] == "Todo" ? (
               <i className="bx bx-circle" id="todo"></i>
             ) : statusMapping[id] == "In progress" ? (
@@ -39,7 +39,7 @@ const Card = ({
           ) : null}
           <p>{id}</p>
         </div>
-        {grouping != "user" ? (
+        {grouping != "users" ? (
           <div
             className={
               user && !user.available

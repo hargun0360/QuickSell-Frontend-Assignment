@@ -1,19 +1,45 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const Navbar = ({ grouping, setGrouping, ordering, setOrdering, call }) => {
-
+const Navbar = ({ grouping: propGrouping, setGrouping, ordering: propOrdering, setOrdering, call }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Handle Change Functions
+  const initialGrouping = localStorage.getItem("grouping") || propGrouping;
+  const initialOrdering = localStorage.getItem("ordering") || propOrdering;
+
+  const [grouping, setLocalGrouping] = useState(initialGrouping);
+  const [ordering, setLocalOrdering] = useState(initialOrdering);
+
+//   useEffect(() => {
+//     if (propGrouping !== grouping) {
+//       setLocalGrouping(propGrouping);
+//     }
+//   }, [propGrouping, grouping]);
+
+  useEffect(() => {
+    localStorage.setItem("grouping", grouping);
+    setGrouping(grouping);
+  }, [grouping]);
+
+  useEffect(() => {
+    localStorage.setItem("ordering", ordering);
+    setOrdering(ordering);
+  }, [ordering]);
+
+  // Handlers
   const handleGrouping = (event) => {
-    setGrouping(event.target.value);
-    call();
+    const newValue = event.target.value;
+    localStorage.setItem("grouping", newValue);
+    setGrouping(newValue);
+    if (newValue === "users") {
+      call();
+    }
   };
 
   const handleOrdering = (event) => {
-    setOrdering(event.target.value);
-    call();
+    const newValue = event.target.value;
+    localStorage.setItem("ordering", newValue);
+    setOrdering(newValue);
   };
 
   useEffect(() => {
@@ -42,15 +68,15 @@ const Navbar = ({ grouping, setGrouping, ordering, setOrdering, call }) => {
           <div className="dropdown-content">
             <div className="Grouping">
               <label>Grouping</label>
-              <select value={grouping} onChange={handleGrouping}>
+              <select value={propGrouping} onChange={handleGrouping}>
                 <option value="status">Status</option>
-                <option value="user">User</option>
+                <option value="users">User</option>
                 <option value="priority">Priority</option>
               </select>
             </div>
             <div className="Ordering">
               <label>Ordering</label>
-              <select value={ordering} onChange={handleOrdering}>
+              <select value={propOrdering} onChange={handleOrdering}>
                 <option value="priority">Priority</option>
                 <option value="title">Title</option>
               </select>

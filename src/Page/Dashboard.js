@@ -20,8 +20,8 @@ const Dashboard = () => {
   const [status, setStatus] = useState({});
   const [user, setUser] = useState({});
   const [priority, setPriority] = useState({});
-  const [grouping, setGrouping] = useState("status");
-  const [ordering, setOrdering] = useState("priority");
+  const [grouping, setGrouping] = useState('status');
+  const [ordering, setOrdering] = useState('priority');
   const [availableUser, setAvailableUser] = useState({});
   const [statusMapping, setStatusMapping] = useState({});
   const statusKeys = ["Backlog", "Todo", "In progress", "Done", "Canceled"];
@@ -165,6 +165,7 @@ const Dashboard = () => {
           <Navbar
             grouping={grouping}
             setGrouping={setGrouping}
+            ordering={ordering}
             setOrdering={setOrdering}
             call={getData}
           />
@@ -227,7 +228,7 @@ const Dashboard = () => {
         </div>
       </>
     );
-  } else if (grouping === "user") {
+  } else if (grouping == "users") {
     return (
       <>
         <div>
