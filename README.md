@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# QuickSell Frontend Assignment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive Kanban board application built using React JS and SCSS. The board dynamically adjusts based on user grouping preferences. It interacts with the provided API from [Quicksell](https://api.quicksell.co/v1/internal/frontend-assignment).
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Conditional Rendering**: Components are rendered based on the state and user preferences.
+- **Grouping**:
+  - **By Status**: Tickets are grouped based on their current status.
+  - **By User**: Tickets are arranged according to the assigned user.
+  - **By Priority**: Tickets are grouped based on their priority level.
+- **Sorting**:
+  - **Priority**: Tickets are arranged in descending order of priority.
+  - **Title**: Tickets are sorted in ascending order based on their title.
+- **User's View State Persistence**: The application saves the user's view state, even after a page reload.
+- **Dynamic Data**: Fetches and displays data from the Quicksell API.
+- **Custom Spinner**: An engaging spinner for better user experience during data fetching or other waiting times.
+- **Available User Indicator**: Displays which users are currently available.
 
-### `npm start`
+## Live Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Experience the application [here](https://quicksell-task-hargun-singh.onrender.com/).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Repository
 
-### `npm test`
+Find the source code on [GitHub](https://github.com/hargun0360/QuickSell-Frontend-Assignment).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack
 
-### `npm run build`
+- **JavaScript**
+- **React JS**
+- **SCSS (CSS Preprocessor)**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Preview
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+##### Priority Display
+![alt text](https://github.com/hargun0360/SHL-Assesment/assets/89998804/a069cc24-ac36-4ce9-b61b-956d98fee520)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##### User Display
+![alt text](https://github.com/hargun0360/SHL-Assesment/assets/89998804/ab927302-faf5-44c3-8003-1b34d5891d9a)
 
-### `npm run eject`
+##### Status Display
+![alt text](https://github.com/hargun0360/SHL-Assesment/assets/89998804/cb872b9a-5b6e-4018-ab54-a8b08cea1c99)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+##### Priority with Ordering title
+![alt text](https://github.com/hargun0360/SHL-Assesment/assets/89998804/65044241-197c-44a6-ae49-976c15e2ee4f)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##### Status Display with Ordering title
+![alt text](https://github.com/hargun0360/SHL-Assesment/assets/89998804/0aa694eb-6feb-445b-83b8-372d2d05b385)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+##### Status Display with Ordering Priority
+![alt text](https://github.com/hargun0360/SHL-Assesment/assets/89998804/a294c9d0-b7f1-48c9-aba8-dafe4a444ddb)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##### User Display with Ordering Priority
+![alt text](https://github.com/hargun0360/SHL-Assesment/assets/89998804/413cf816-88b0-4fd0-893d-b9684c44e865)
